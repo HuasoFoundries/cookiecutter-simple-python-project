@@ -1,0 +1,6 @@
+build-essential
+libpq-dev
+python3-dev
+python3-pip
+python3.4-venv
+python-flake8
