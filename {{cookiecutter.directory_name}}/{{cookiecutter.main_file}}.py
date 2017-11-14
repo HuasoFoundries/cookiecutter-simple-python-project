@@ -2,14 +2,19 @@
 
 import argparse
 import logging
-import src.helpers as helpers
 import time
+import os
+
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv())
 
 logger = logging.getLogger(__name__ if __name__ != '__main__' else __package__)
 
 
 def main(no_flag_1: bool,
-         flag_2: str):
+         flag_2: str,
+         db_url: str):
     """
     TODO
     """
@@ -21,6 +26,13 @@ def main(no_flag_1: bool,
     logger.info('Duration: {} seconds'.format(time.time() - start_total_time))
 
 if __name__ == "__main__":
+
+    log_level = os.environ['LOG_LEVEL']
+    db_url = os.environ['DB_URL']
+
+    logging.basicConfig(
+        level=log_level,
+        format='%(asctime)-15s %(name)-20s %(levelname)-8s %(message)s')
 
     parser = argparse.ArgumentParser(description='')
 
@@ -35,7 +47,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Init logging
-    helpers.init_logging()
-
-    main(args.no_flag_1, args.flag_2)
+    main(args.no_flag_1, args.flag_2, db_url)
