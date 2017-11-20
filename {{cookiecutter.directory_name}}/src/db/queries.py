@@ -14,3 +14,8 @@ LOAD_EXAMPLE = """
     public.table (id)
     values %s
 """
+
+QUERY_EXAMPLE_3 = """
+	SELECT name
+	FROM public.table
+"""

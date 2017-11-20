@@ -25,3 +25,13 @@ def get_data_example_2(schema, table, url):
                                           sql.Identifier(table)),
                                    con=conn)
         return result
+
+
+def get_data_example_3(url):
+    with psycopg2.connect(url) as conn:
+        conn.autocommit = True
+        cur = conn.cursor()
+
+        cur.execute(queries.QUERY_EXAMPLE_3)
+        result = cur.fetchall()
+        return result
