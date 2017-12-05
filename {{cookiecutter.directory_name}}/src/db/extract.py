@@ -47,3 +47,18 @@ def get_data_example_4(name, url):
         rows = cur.fetchall()
 
         return rows
+
+
+def get_data_example_5(schema, table, url):
+    with psycopg2.connect(url) as conn:
+        conn.autocommit = True
+
+        cur = conn.cursor()
+
+        cur.execute(sql.SQL(queries.QUERY_EXAMPLE_2).
+                        format(sql.Identifier(schema),
+                               sql.Identifier(table)))
+
+        rows = cur.fetchall()
+
+        return rows
