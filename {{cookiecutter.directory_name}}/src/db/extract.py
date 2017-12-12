@@ -62,3 +62,14 @@ def get_data_example_5(schema, table, url):
         rows = cur.fetchall()
 
         return rows
+
+
+def get_data_example_6(schema, table, list_values, url):
+    with psycopg2.connect(url) as conn:
+        conn.autocommit = True
+        result = pd.read_sql_query(sql.SQL(queries.QUERY_EXAMPLE_4).
+                                   format(sql.Identifier(schema),
+                                          sql.Identifier(table)),
+                                   params={'values':tuple(list_values)}
+                                   con=conn)
+        return result
