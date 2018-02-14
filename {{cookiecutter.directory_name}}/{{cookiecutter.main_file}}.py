@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import configparser
 import logging
 import time
 import os
@@ -21,6 +22,10 @@ def main(no_flag_1: bool,
     logger.info('Starting'
                 ' {}'.format(time.strftime('%Y-%m-%d %H:%M:%S')))
     start_total_time = time.time()
+
+    cfg = configparser.ConfigParser()
+    cfg.read('config.cfg')
+    value1_section = cfg[section][key1]    
 
     logger.info('Finished execution')
     logger.info('Duration: {} seconds'.format(time.time() - start_total_time))
