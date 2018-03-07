@@ -25,7 +25,7 @@ def main(no_flag_1: bool,
 
     cfg = configparser.ConfigParser()
     cfg.read('config.cfg')
-    value1_section = cfg[section][key1]    
+    value1_section = cfg['section']['key1']
 
     logger.info('Finished execution')
     logger.info('Duration: {} seconds'.format(time.time() - start_total_time))

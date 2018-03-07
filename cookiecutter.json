@@ -2,7 +2,7 @@
     "directory_name": "project_folder_name",
     "project_name": "project_name",
     "basic_description": "A brief description fo the project",
-    "main_file": "main.py",
+    "main_file": "main",
     "author": "author",
 	"email" : "email@example.com",
 	"version" : "version 0.1"
